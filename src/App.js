@@ -19,6 +19,7 @@ class App extends React.Component {
       userInput: ''
     }
     this.handleSearchInput = this.handleSearchInput.bind(this) //gives access to this.handlechange
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -44,6 +45,22 @@ handleSearchInput = (action) => {
   //console.log(action.target.value)
 }
 
+  //form event handler
+  handleSubmit(action) {
+    action.preventDefault(); // dont send anythihg when load
+    fetch(`https://api.github.com/users/${this.state.userInput}`)
+    .then(results => results.json())
+    .then(data =>
+      //console.log(data)
+      this.setState({
+        login: data.login,
+        followers: data.followers,
+        following: data.following,
+        public_repos: data.public_repos,
+        avatar_url: data.avatar_url
+      })
+    );
+  }
 
   render() {
 
@@ -51,7 +68,7 @@ handleSearchInput = (action) => {
       <div>
         <Header>Github User Finder</Header>
         <div className="search">
-          <Form  >
+          <Form  onSubmit={this.handleSubmit}>
             <Form.Group>
               <Form.Input placeholder="Github User" name="name" onChange={this.handleSearchInput} />
               <Form.Button content="Search" />
