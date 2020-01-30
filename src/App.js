@@ -16,9 +16,9 @@ class App extends React.Component {
       following: undefined,
       public_repos: undefined,
       avatar_url: undefined,
-
+      userInput: ''
     }
-
+    this.handleSearchInput = this.handleSearchInput.bind(this) //gives access to this.handlechange
   }
 
   componentDidMount() {
@@ -36,6 +36,14 @@ class App extends React.Component {
       );
   }
 
+//search field event handler
+handleSearchInput = (action) => {
+  this.setState({
+    userInput: action.target.value
+  })
+  //console.log(action.target.value)
+}
+
 
   render() {
 
@@ -45,7 +53,7 @@ class App extends React.Component {
         <div className="search">
           <Form  >
             <Form.Group>
-              <Form.Input placeholder="Github User" name="name"  />
+              <Form.Input placeholder="Github User" name="name" onChange={this.handleSearchInput} />
               <Form.Button content="Search" />
             </Form.Group>
           </Form>
