@@ -4,7 +4,12 @@
   padding: 20px 0;
 }
 
-
+.error-message{
+  justify-content: center;
+  display: flex;
+  padding: 20px 0;
+  color: #F4F5F5;
+}
 body{
   background-color: #5BAF85;
 }
