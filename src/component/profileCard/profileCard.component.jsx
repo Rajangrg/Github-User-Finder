@@ -2,40 +2,32 @@ import React from "react";
 import { Card, Icon, Image } from 'semantic-ui-react'
 import './profileCard.style.css';
 
-const ProfileCard = ({
-	login,
-	followers,
-	following,
-	public_repos,
-	avatar_url}) => (
-	<div className="card">
-		<Card>
-			<Image src={avatar_url} wrapped ui={false} />
-			<Card.Content>
+class ProfileCard extends React.Component {
+	render() {
+		return (
+			<div className="card">
+				<Card>
 
-				<Card.Header>{login}</Card.Header>
-			</Card.Content>
-			<Card.content extra>
-				<a href>
-					<Icon name="user" />
-					{followers} followers
-		</a>
-			</Card.content>
-			<Card.content extra>
-				<a href>
-					<Icon name="user" />
-					{public_repos} Repos
-		</a>
-			</Card.content>
-			<Card.content extra>
-				<a href>
-					<Icon name="user" />
-					{following} Following
-		</a>
-			</Card.content>
-
-		</Card>
-	</div>
-)
+					<Image src={this.props.avatar_url} wrapped ui={false} />
+					<Card.Content>
+						<Card.Header>{this.props.login}</Card.Header>
+					</Card.Content>
+					<Card.Content extra>
+						<Icon name="users" />
+						Followers: {this.props.followers}
+					</Card.Content>
+					<Card.Content extra>
+						<Icon name="user" />
+						Following: {this.props.following}
+					</Card.Content>
+					<Card.Content extra>
+						<Icon name="book" />
+						public_repos: {this.props.public_repos}
+					</Card.Content>
+				</Card>
+			</div>
+		)
+	}
+}
 
 export default ProfileCard;

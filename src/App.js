@@ -11,55 +11,53 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      github: []
+      login: undefined,
+      followers: undefined,
+      following: undefined,
+      public_repos: undefined,
+      avatar_url: undefined,
+
     }
+
   }
 
   componentDidMount() {
-    fetch('https://api.github.com/users/example')
+    fetch(`https://api.github.com/users/example`)
       .then(results => results.json())
       .then(data =>
         //console.log(data)
-        this.setState({ github: data })
-
+        this.setState({
+          login: data.login,
+          followers: data.followers,
+          following: data.following,
+          public_repos: data.public_repos,
+          avatar_url: data.avatar_url
+        })
       );
   }
 
+
   render() {
-    const { github } = this.state;
+
     return (
       <div>
         <Header>Github User Finder</Header>
         <div className="search">
-          <Form>
+          <Form  >
             <Form.Group>
-              <Form.Input placeholder="Github User" name="name" />
+              <Form.Input placeholder="Github User" name="name"  />
               <Form.Button content="Search" />
             </Form.Group>
           </Form>
         </div>
-
-        {console.log(this.state.github.login)}
-
-{/* {github.map(({
-          login,
-          followers,
-          following,
-          public_repos,
-          avatar_url }) => (
-          <ProfileCard
-
-
-            login={login}
-            followers={followers}
-            following={following}
-            public_repos={public_repos}
-            avatar_url ={avatar_url}
-            ></ProfileCard>
-          ))}
- */}
-
-
+        {/* {console.log(this.state.avatar_url)} */}
+        <ProfileCard
+          login={this.state.login}
+          followers={this.state.followers}
+          following={this.state.following}
+          public_repos={this.state.public_repos}
+          avatar_url={this.state.avatar_url}
+        />
       </div>
 
     );
