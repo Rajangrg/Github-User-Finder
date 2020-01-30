@@ -60,6 +60,10 @@ handleSearchInput = (action) => {
         avatar_url: data.avatar_url
       })
     );
+   //after submit clear search input field
+   this.setState({
+    userInput: ' '
+  })
   }
 
   render() {
@@ -70,7 +74,7 @@ handleSearchInput = (action) => {
         <div className="search">
           <Form  onSubmit={this.handleSubmit}>
             <Form.Group>
-              <Form.Input placeholder="Github User" name="name" onChange={this.handleSearchInput} />
+              <Form.Input placeholder="User Name" name="name" onChange={this.handleSearchInput} />
               <Form.Button content="Search" />
             </Form.Group>
           </Form>
