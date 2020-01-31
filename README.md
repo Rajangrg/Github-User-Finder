@@ -1,4 +1,11 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+######################################################################################### 
+
+To see the final outcome of the application please find the png file on the source code...
+
+###########################################################################################
+
+
+his project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
