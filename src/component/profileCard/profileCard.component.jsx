@@ -10,7 +10,9 @@ class ProfileCard extends React.Component {
 
 					<Image src={this.props.avatar_url} wrapped ui={false} />
 					<Card.Content>
-						<Card.Header>{this.props.login}</Card.Header>
+						<Card.Header>
+						<p className="font-style">Hello Everyone, I am  {this.props.login}</p>
+						</Card.Header>
 					</Card.Content>
 					<Card.Content extra>
 						<Icon name="users" />

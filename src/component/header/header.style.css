@@ -1,8 +1,9 @@
 .navbar{
-	padding: 20px;
+	padding: 23px;
 	text-align: left;
 	background-color: #C8793F;
 	color: #F4F5F5;
 	font-size: 1.3em;
-	border-style: outset;
+	border-bottom-style: solid;
+  border-bottom-color: #F1DF8F;
 }

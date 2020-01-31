@@ -1,7 +1,7 @@
 //Library
 import React from 'react';
 import { Form } from 'semantic-ui-react';
-import {  Icon } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
 //css
 import './App.css';
 //components
@@ -12,6 +12,7 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
+      location: undefined,
       login: undefined,
       followers: undefined,
       following: undefined,
@@ -53,20 +54,23 @@ class App extends React.Component {
     fetch(`https://api.github.com/users/${this.state.userInput}`)
       .then(results => results.json())
       .then(data =>
-        //console.log(data)
-     {  if(data.message){
-      this.setState({
-        errorMessage:'Sorry no user found'
-      })
-    }else{
-     this.setState({
-       login: data.login,
-       followers: data.followers,
-       following: data.following,
-       public_repos: data.public_repos,
-       avatar_url: data.avatar_url
-     })
-    }}
+      //console.log(data)
+      {
+        if (data.message) {
+          this.setState({
+            errorMessage: 'Sorry no user found'
+          })
+        } else {
+          this.setState({
+            login: data.login,
+            followers: data.followers,
+            following: data.following,
+            public_repos: data.public_repos,
+            avatar_url: data.avatar_url,
+            errorMessage: ''
+          })
+        }
+      }
       );
     //after submit clear search input field
     this.setState({
@@ -77,8 +81,8 @@ class App extends React.Component {
   render() {
 
     return (
-      <div>
-        <Header>Github User Finder</Header>
+      <div className="main-body">
+        <Header><Icon name="github  " />Github User Finder</Header>
         <div className="search">
           <Form onSubmit={this.handleSubmit}>
             <Form.Group>
@@ -89,13 +93,13 @@ class App extends React.Component {
         </div>
         {/* {console.log(this.state.avatar_url)} */}
         {this.state.errorMessage ? (<h2 className="error-message"><Icon name="github " />{this.state.errorMessage}	</h2>)
-        : (<ProfileCard
-          login={this.state.login}
-          followers={this.state.followers}
-          following={this.state.following}
-          public_repos={this.state.public_repos}
-          avatar_url={this.state.avatar_url}
-        />)}
+          : (<ProfileCard
+            login={this.state.login}
+            followers={this.state.followers}
+            following={this.state.following}
+            public_repos={this.state.public_repos}
+            avatar_url={this.state.avatar_url}
+          />)}
       </div>
 
     );

@@ -3,7 +3,7 @@ import './header.style.css'
 
 const Header = (props) => (
 	<div className="navbar">
-		{props.children}
+	<h3>{props.children}</h3>
 	</div>
 )
 
