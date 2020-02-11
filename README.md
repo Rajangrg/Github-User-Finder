@@ -4,6 +4,15 @@ To see the final outcome of the application please find the png file on the sour
 
 ###########################################################################################
 
+# Landing Page
+<img src="Landing Page.PNG">
+
+
+# Query Result
+<img src="search query back.PNG">
+
+# User Not Found Result
+<img src="User Not Found.PNG">
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
